@@ -1,8 +1,13 @@
-fileUrl <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
-download.file(fileUrl, destfile = "./data/household_power_consumption.zip")
-unzip("./data/household_power_consumption.zip", exdir = "./data")
+if (!file.exists("household_power_consumption.zip")) {
+  download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip",
+                destfile = "household_power_consumption.zip")
+}
 
-hpc <- read.table("./data/household_power_consumption.txt", sep=";", header=TRUE, na.strings="?")
+if (!file.exists("household_power_consumption.txt")) {
+  unzip("household_power_consumption.zip")
+}
+
+hpc <- read.table("household_power_consumption.txt", sep=";", header=TRUE, na.strings="?")
 hpc <- hpc[hpc$Date == "1/2/2007" | hpc$Date == "2/2/2007",]
 
 hpc$datetime <- paste(hpc$Date, hpc$Time, sep=" ")
