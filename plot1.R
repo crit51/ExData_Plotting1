@@ -1,4 +1,4 @@
-hpc <- read.table("C:\\Users\\SHJIN\\OneDrive\\household_power_consumption.txt", sep=";", header=TRUE, na.strings="?")
+hpc <- read.table("./data/household_power_consumption.txt", sep=";", header=TRUE, na.strings="?")
 hpc$Date <- as.Date(hpc$Date, format="%d/%m/%Y")
 
 png("plot1.png", width=480, height=480)
